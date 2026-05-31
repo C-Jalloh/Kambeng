@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+.env
+.venv
+venv/
+env/
+# Node
+node_modules/
+# Next.js build output
+.next/
+frontend-next/.next/
+# TypeScript build info
+*.tsbuildinfo
+# VSCode/IDE
+.vscode/
+.idea/
+.DS_Store
+uploads/
+*.sqlite3
+*.db
+*.log
+# pytest
+.pytest_cache/
