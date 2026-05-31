@@ -1,0 +1,136 @@
+import logging
+from pathlib import Path
+
+import resend
+from jinja2 import Environment, FileSystemLoader, TemplateNotFound, select_autoescape
+
+from app.core.config import settings
+
+logger = logging.getLogger(__name__)
+
+# Initialize the Resend client with your API key
+resend.api_key = settings.RESEND_API_KEY
+
+TEMPLATE_DIR = Path(__file__).resolve().parent.parent / "templates" / "emails"
+jinja_env = Environment(
+    loader=FileSystemLoader(str(TEMPLATE_DIR)),
+    autoescape=select_autoescape(["html", "xml"]),
+)
+
+
+def render_template(template_name: str, **context: object) -> str:
+    base_context = {
+        "app_name": "Kambeng",
+        "brand_color": "#1dc5ff",
+        "brand_dark": "#079bd4",
+        "brand_bg": "#0a0f1a",
+        "brand_surface": "#0d1120",
+        "brand_text": "#f0f6ff",
+        "brand_muted": "#8899aa",
+        "frontend_url": settings.FRONTEND_URL.rstrip("/"),
+    }
+
+    try:
+        template = jinja_env.get_template(template_name)
+        return template.render(**base_context, **context)
+    except TemplateNotFound:
+        logger.error("Email template not found", extra={"template": template_name})
+        return ""
+
+def send_email(to_email: str, subject: str, html_content: str) -> bool:
+    """
+    Sends an email using the Resend service.
+    In testing/dev without a verified domain, 'to_email' must be the email address your Resend account is registered with.
+    """
+    if not settings.RESEND_API_KEY:
+        logger.warning(f"MOCK EMAIL to {to_email}: {subject} | {html_content}")
+        return True
+
+    params = {
+        "from": settings.RESEND_FROM_EMAIL,
+        "to": to_email,
+        "subject": subject,
+        "html": html_content,
+    }
+
+    try:
+        email = resend.Emails.send(params)
+        logger.info(f"Email sent successfully to {to_email}")
+        return True
+    except Exception as e:
+        logger.error(f"Failed to send email to {to_email}: {str(e)}")
+        return False
+
+
+def render_password_reset_email(full_name: str, reset_link: str) -> str:
+    return render_template(
+        "password_reset.html",
+        full_name=full_name,
+        reset_link=reset_link,
+    )
+
+
+def render_email_verification_email(full_name: str, verification_code: str, wave_number: str) -> str:
+    return render_template(
+        "verify_email.html",
+        full_name=full_name,
+        verification_code=verification_code,
+        wave_number=wave_number,
+    )
+
+
+def render_recurring_donation_reminder(
+    donor_name: str,
+    campaign_title: str,
+    amount: float,
+    frequency: str,
+    payment_link: str,
+) -> str:
+    return render_template(
+        "recurring_donation_reminder.html",
+        donor_name=donor_name,
+        campaign_title=campaign_title,
+        amount=f"{amount:,.2f}",
+        frequency=frequency,
+        payment_link=payment_link,
+    )
+
+
+def render_recurring_donation_confirmation_email(
+    full_name: str,
+    campaign_title: str,
+    amount: float,
+    frequency: str,
+    next_charge_date: str,
+) -> str:
+    return render_template(
+        "recurring_donation_confirmation.html",
+        full_name=full_name,
+        campaign_title=campaign_title,
+        amount=f"{amount:,.2f}",
+        frequency=frequency,
+        next_charge_date=next_charge_date,
+    )
+
+
+def render_recurring_donation_issue_email(
+    full_name: str,
+    campaign_title: str,
+    amount: float,
+) -> str:
+    return render_template(
+        "recurring_donation_issue.html",
+        full_name=full_name,
+        campaign_title=campaign_title,
+        amount=f"{amount:,.2f}",
+    )
+
+
+def render_kyc_submission_review(full_name: str, user_email: str, document_type: str, review_link: str) -> str:
+    return render_template(
+        "kyc_submission_review.html",
+        full_name=full_name,
+        user_email=user_email,
+        document_type=document_type,
+        review_link=review_link,
+    )
