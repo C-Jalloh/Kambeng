@@ -1,0 +1,27 @@
+# Ignore uploaded media stored locally
+uploads/
+
+# Keep the compressed archive tracked (if you want to push a snapshot)
+# uploads.tar.gz
+.env
+# Virtual environment
+venv/
+.venv/
+node_modules/
+*.pyc
+__pycache__/
+.DS_Store
+*.log
+*.sqlite3
+*.db
+*.bak
+*.swp
+*.swo
+*.tmp
+*.zip
+*.tar.gz
+*.egg-info/
+dist/
+build/
+*.egg
+*.egg-info/

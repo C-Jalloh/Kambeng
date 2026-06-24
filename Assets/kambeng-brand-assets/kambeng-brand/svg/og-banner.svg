@@ -1,0 +1,32 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16B7F0"/>
+      <stop offset="100%" stop-color="#08453A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- decorative faint circles for texture -->
+  <circle cx="1080" cy="80" r="220" fill="#FBF7F0" opacity="0.04"/>
+  <circle cx="1150" cy="560" r="160" fill="#F2A93B" opacity="0.06"/>
+  <circle cx="60" cy="600" r="140" fill="#FBF7F0" opacity="0.04"/>
+
+  <!-- icon mark -->
+  <g transform="translate(90,150)">
+    <rect x="0" y="0" width="200" height="200" rx="46" fill="#FBF7F0"/>
+    <g stroke="#0B82BD" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M70,52 L70,148"/>
+      <path d="M70,101 L135,52"/>
+      <path d="M70,101 L135,148"/>
+    </g>
+    <circle cx="160" cy="103" r="11" fill="#F2A93B"/>
+  </g>
+
+  <text x="340" y="240" font-family="Poppins" font-weight="600" font-size="90" fill="#FBF7F0">kambeng</text>
+  <text x="342" y="290" font-family="Poppins" font-weight="500" font-size="30" letter-spacing="1" fill="#9FDBF5">FUND WHAT MATTERS</text>
+
+  <text x="90" y="450" font-family="Poppins" font-weight="600" font-size="42" fill="#FBF7F0">Real Causes. Real Proof. Real Gambians.</text>
+  <text x="90" y="500" font-family="Poppins" font-weight="400" font-size="26" fill="#CFE6DF">KYC-verified campaigns · Wave · APS Mobile Money · Card payments</text>
+
+</svg>

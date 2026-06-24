@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kambeng Loading Spinners — Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    background: #0B0F1A;
+    color: #F5F7FA;
+    font-family: 'Poppins', sans-serif;
+    padding: 60px 24px;
+  }
+  h1 { font-size: 26px; font-weight: 600; margin-bottom: 6px; }
+  p.sub { color: #8C9AB3; margin-top: 0; margin-bottom: 48px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+    max-width: 1100px;
+  }
+  .cell {
+    background: #121826;
+    border: 1px solid #1E2636;
+    border-radius: 16px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-height: 140px;
+    justify-content: center;
+  }
+  .cell span.label { font-size: 14px; color: #8C9AB3; letter-spacing: 0.5px; }
+  .wide { grid-column: 1 / -1; align-items: stretch; }
+</style>
+</head>
+<body>
+
+<h1>Kambeng loading spinners</h1>
+<p class="sub">Live preview — open this file directly in any browser, no build step required.</p>
+
+<div class="grid">
+
+  <div class="cell">
+    <div class="kb-ring"></div>
+    <span class="label">Ring</span>
+  </div>
+
+  <div class="cell">
+    <div class="kb-dots"><span></span><span></span><span></span></div>
+    <span class="label">Dots</span>
+  </div>
+
+  <div class="cell">
+    <div class="kb-mark">
+      <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#FBF7F0" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M84,64 L84,176"/><path d="M84,122 L162,64"/><path d="M84,122 L162,176"/>
+        </g>
+      </svg>
+    </div>
+    <span class="label">Mark pulse</span>
+  </div>
+
+  <div class="cell wide">
+    <div class="kb-bar-track" style="margin-bottom: 12px;"><div class="kb-bar-fill"></div></div>
+    <span class="label" style="align-self:center;">Indeterminate bar (route-loading style)</span>
+  </div>
+
+  <div class="cell wide" style="align-items:stretch;">
+    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+      <div style="background:#0B0F1A; border:1px solid #1E2636; border-radius:16px; padding:16px; width:220px; display:flex; flex-direction:column; gap:12px;">
+        <div class="kb-skeleton" style="width:100%; height:120px; border-radius:10px;"></div>
+        <div class="kb-skeleton" style="width:70%;"></div>
+        <div class="kb-skeleton" style="width:40%;"></div>
+        <div class="kb-skeleton" style="width:100%; height:6px; border-radius:3px;"></div>
+        <div style="display:flex; gap:8px;">
+          <div class="kb-skeleton" style="flex:1; height:32px; border-radius:8px;"></div>
+          <div class="kb-skeleton" style="flex:1; height:32px; border-radius:8px;"></div>
+        </div>
+      </div>
+      <p style="color:#8C9AB3; font-size:14px; max-width:320px; align-self:center;">Skeleton campaign card — mirrors the real card layout (image, title, progress, two buttons) so nothing jumps when real data loads in.</p>
+    </div>
+  </div>
+
+</div>
+
+<link rel="stylesheet" href="kambeng-spinners.css">
+</body>
+</html>

@@ -1,0 +1,32 @@
+name: kambeng
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kambeng-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    network_mode: host
+    environment:
+      PYTHONUNBUFFERED: "1"
+    ports:
+      - "127.0.0.1:8001:8001"
+    volumes:
+      - ./uploads:/app/uploads
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kambeng-worker
+    restart: unless-stopped
+    env_file:
+      - .env
+    network_mode: host
+    environment:
+      PYTHONUNBUFFERED: "1"
+    command: ["python", "-m", "app.workers.recurring_donations_worker"]
+    volumes:
+      - ./uploads:/app/uploads
