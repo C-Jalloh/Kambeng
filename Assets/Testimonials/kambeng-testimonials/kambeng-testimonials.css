@@ -1,0 +1,111 @@
+/* ==========================================================================
+   Kambeng Testimonials Section
+   Matches the live site's dark theme: #0B0F1A bg, #121826 cards, #16B7F0 accent
+   ========================================================================== */
+
+.kb-testimonials {
+  padding: 64px 24px;
+  background: #0B0F1A;
+}
+
+.kb-testimonials__header {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 40px;
+}
+
+.kb-testimonials__eyebrow {
+  color: #16B7F0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.kb-testimonials__title {
+  color: #F5F7FA;
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.kb-testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.kb-testimonial-card {
+  background: #121826;
+  border: 1px solid #1E2636;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.kb-testimonial-card:hover {
+  border-color: #2A3650;
+}
+
+.kb-testimonial-card__stars {
+  color: #F2A93B;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.kb-testimonial-card__quote {
+  color: #E8EBF0;
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.kb-testimonial-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.kb-testimonial-card__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.kb-testimonial-card__name {
+  color: #F5F7FA;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.kb-testimonial-card__meta {
+  color: #8C9AB3;
+  font-size: 12px;
+}
+
+.kb-testimonial-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #16B7F0;
+  background: rgba(22, 183, 240, 0.1);
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-left: auto;
+  white-space: nowrap;
+}
